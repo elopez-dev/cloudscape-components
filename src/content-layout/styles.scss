@@ -4,6 +4,7 @@
 */
 @use '../internal/styles/' as styles;
 @use '../internal/styles/tokens' as awsui;
+@use '../internal/generated/custom-css-properties/index.scss' as custom-props;
 
 /*
 Pass through the header and child content if not rendering in 
@@ -57,6 +58,12 @@ nodes will directly touch with no gap between them.
     @include styles.media-breakpoint-down(styles.$breakpoint-x-small) {
       padding: awsui.$space-m 0 awsui.$space-content-header-padding-bottom;
     }
+  }
+
+  &.has-sticky-header > :is(.background, .header) {
+    position: sticky;
+    top: var(#{custom-props.$offsetTopWithNotifications});
+    z-index: 800;
   }
 
   > .content {
