@@ -26,6 +26,7 @@ export interface RadioGroupProps extends BaseComponentProps, FormFieldControlPro
    * - `disabled` (boolean) - (Optional) Determines whether the radio button is disabled, which prevents the user from selecting it.
    * - `controlId` (string) - (Optional) Sets the ID of the internal input. You can use it to relate a label element's `for` attribute to this control.
    *        In general it's not recommended to set this because the ID is automatically set by the radio group component.
+   * - `secondaryContent` (ReactNode) - (Optional) Specifies additional content displayed below the radio button, for example for progressive disclosure.
    */
   items?: ReadonlyArray<RadioGroupProps.RadioButtonDefinition>;
 
@@ -59,6 +60,7 @@ export namespace RadioGroupProps {
     description?: React.ReactNode;
     disabled?: boolean;
     controlId?: string;
+    secondaryContent?: React.ReactNode;
   }
 
   export interface ChangeDetail {

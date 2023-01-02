@@ -17,6 +17,7 @@ export interface AbstractSwitchProps extends React.HTMLAttributes<HTMLElement>, 
   label?: React.ReactNode;
   description?: React.ReactNode;
   descriptionBottomPadding?: boolean;
+  secondaryContent?: React.ReactNode;
   ariaLabel?: string;
   ariaLabelledby?: string;
   ariaDescribedby?: string;
@@ -37,6 +38,7 @@ export default function AbstractSwitch({
   label,
   description,
   descriptionBottomPadding,
+  secondaryContent,
   ariaLabel,
   ariaLabelledby,
   ariaDescribedby,
@@ -69,12 +71,8 @@ export default function AbstractSwitch({
 
   return (
     <div {...rest} className={clsx(styles.wrapper, rest.className)} ref={__internalRootRef}>
-      <div
-        className={styles['label-wrapper']}
-        aria-disabled={disabled ? 'true' : undefined}
-        onClick={disabled ? undefined : onClick}
-      >
-        <span className={clsx(styles.control, controlClassName)}>
+      <div className={styles['label-wrapper']} aria-disabled={disabled ? 'true' : undefined}>
+        <span className={clsx(styles.control, controlClassName)} onClick={disabled ? undefined : onClick}>
           {styledControl}
           {nativeControl({
             ...focusVisible,
@@ -89,7 +87,11 @@ export default function AbstractSwitch({
         </span>
         <span className={clsx(styles.content, !label && !description && styles['empty-content'])}>
           {label && (
-            <span id={labelId} className={clsx(styles.label, { [styles['label-disabled']]: disabled })}>
+            <span
+              id={labelId}
+              className={clsx(styles.label, { [styles['label-disabled']]: disabled })}
+              onClick={disabled ? undefined : onClick}
+            >
               {label}
             </span>
           )}
@@ -100,10 +102,12 @@ export default function AbstractSwitch({
                 [styles['description-disabled']]: disabled,
                 [styles['description-bottom-padding']]: descriptionBottomPadding,
               })}
+              onClick={disabled ? undefined : onClick}
             >
               {description}
             </span>
           )}
+          {secondaryContent && <div className={styles.secondaryContent}>{secondaryContent}</div>}
         </span>
       </div>
     </div>

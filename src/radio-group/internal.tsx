@@ -57,6 +57,7 @@ const InternalRadioGroup = React.forwardRef(
               disabled={item.disabled}
               onChange={onChange}
               controlId={item.controlId}
+              secondaryContent={item.secondaryContent}
             />
           ))}
       </div>
