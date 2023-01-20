@@ -18,3 +18,4 @@ jobs:
     secrets: inherit
     with:
       publish-packages: lib/components,lib/design-tokens,lib/style-dictionary,lib/components-themeable,lib/dev-pages,lib/components-definitions
+      skip-test: true

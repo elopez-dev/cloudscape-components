@@ -83,4 +83,61 @@ describe('SpaceBetween', () => {
     expect(content[0].getElement()).toHaveAttribute('id', 'button-one');
     expect(content[1].getElement()).toHaveAttribute('id', 'button-two');
   });
+
+  describe('falsy children', () => {
+    it('omits false', () => {
+      const { container } = render(
+        <SpaceBetween direction="vertical" size="s">
+          <button />
+          {false}
+          <button />
+        </SpaceBetween>
+      );
+      expect(createWrapper(container).findSpaceBetween()?.getElement().childElementCount).toBe(2);
+    });
+
+    it('omits null', () => {
+      const { container } = render(
+        <SpaceBetween direction="vertical" size="s">
+          <button />
+          {null}
+          <button />
+        </SpaceBetween>
+      );
+      expect(createWrapper(container).findSpaceBetween()?.getElement().childElementCount).toBe(2);
+    });
+
+    it('omits undefined', () => {
+      const { container } = render(
+        <SpaceBetween direction="vertical" size="s">
+          <button />
+          {undefined}
+          <button />
+        </SpaceBetween>
+      );
+      expect(createWrapper(container).findSpaceBetween()?.getElement().childElementCount).toBe(2);
+    });
+
+    it('omits zero number primitive', () => {
+      const { container } = render(
+        <SpaceBetween direction="vertical" size="s">
+          <button />
+          {0}
+          <button />
+        </SpaceBetween>
+      );
+      expect(createWrapper(container).findSpaceBetween()?.getElement().childElementCount).toBe(2);
+    });
+
+    it('omits empty string', () => {
+      const { container } = render(
+        <SpaceBetween direction="vertical" size="s">
+          <button />
+          {''}
+          <button />
+        </SpaceBetween>
+      );
+      expect(createWrapper(container).findSpaceBetween()?.getElement().childElementCount).toBe(2);
+    });
+  });
 });
