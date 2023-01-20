@@ -31,6 +31,7 @@ export default function InternalSpaceBetween({
       ref={__internalRootRef}
     >
       {flattenedChildren
+        // Remove falsey children
         .filter(child => !!child)
         .map(child => {
           // If this react child is a primitive value, the key will be undefined
