@@ -1397,6 +1397,12 @@ scrolled out of the viewport.",
       "type": "string",
     },
     Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "clearAriaLabel",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
       "description": "Specifies the ID of the native form element. You can use it to relate
 a label element's \`for\` attribute to this control.
 It defaults to an automatically generated ID that
@@ -4563,6 +4569,12 @@ scrolled out of the viewport.",
       "type": "string",
     },
     Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "clearAriaLabel",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
       "description": "Specifies the ID of the native form element. You can use it to relate
 a label element's \`for\` attribute to this control.
 It defaults to an automatically generated ID that
@@ -5533,7 +5545,6 @@ Object {
       "type": "string",
     },
     Object {
-      "deprecatedTag": "Replaced by \`action\`.",
       "description": "Specifies flash messages that appear in the same order that they are listed.
 The value is an array of flash message definition objects.
 A flash message object contains the following properties:
@@ -5545,23 +5556,23 @@ A flash message object contains the following properties:
 When a user clicks on this button the \`onDismiss\` handler is called.
 * \`dismissLabel\` (string) - Specifies an \`aria-label\` for to the dismiss icon button for improved accessibility.
 * \`statusIconAriaLabel\` (string) - Specifies an \`aria-label\` for to the status icon for improved accessibility.
-* \`ariaRole\` (boolean) - For flash messages added after page load, specifies how this message is communicated to assistive
+* \`ariaRole\` (string) - For flash messages added after page load, specifies how this message is communicated to assistive
 technology. Use \\"status\\" for status updates or informational content. Use \\"alert\\" for important messages that need the
 user's attention.
 * \`action\` (ReactNode) - Specifies an action for the flash message. Although it is technically possible to insert any content,
 our UX guidelines only allow you to add a button.
 * \`buttonText\` (string) - Specifies that an action button should be displayed, with the specified text.
-When a user clicks on this button the \`onButtonClick\` handler is called. If the \`action\` property is set, this property is ignored.
+When a user clicks on this button the \`onButtonClick\` handler is called.
+If the \`action\` property is set, this property is ignored. **Deprecated**, replaced by \`action\`.
 * \`onButtonClick\` (event => void) - Called when a user clicks on the action button. This is not called if you create a custom button
   using the \`action\` property. **Deprecated**, replaced by \`action\`.
-* \`id\` (string) - Specifies a unique flash message identifier. This property  is used in two ways:
+* \`id\` (string) - Specifies a unique flash message identifier. This property is used in two ways:
   1. As a [keys](https://reactjs.org/docs/lists-and-keys.html#keys) source for React rendering.
   2. To identify which flash message will be removed from the DOM when it is dismissed, to animate it out.
 ",
       "name": "items",
       "optional": false,
       "type": "ReadonlyArray<FlashbarProps.MessageDefinition>",
-      "visualRefreshTag": "\`id\` property",
     },
   ],
   "regions": Array [],
@@ -6452,6 +6463,12 @@ scrolled out of the viewport.",
       "deprecatedTag": "Custom CSS is not supported. For other use cases, use [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).",
       "description": "Adds the specified classes to the root element of the component.",
       "name": "className",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "clearAriaLabel",
       "optional": true,
       "type": "string",
     },
@@ -7815,6 +7832,12 @@ in a slight, visible lag when scrolling complex pages.",
       "type": "string",
     },
     Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "filteringClearAriaLabel",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
       "description": "Specifies the placeholder to display in the filtering input if filtering is enabled.",
       "name": "filteringPlaceholder",
       "optional": true,
@@ -9124,6 +9147,11 @@ operations are communicated to the user in another way.",
             "type": "string",
           },
           Object {
+            "name": "clearAriaLabel",
+            "optional": true,
+            "type": "string",
+          },
+          Object {
             "name": "clearFiltersText",
             "optional": false,
             "type": "string",
@@ -9362,6 +9390,13 @@ Object {
   ],
   "name": "RadioGroup",
   "properties": Array [
+    Object {
+      "description": "Adds \`aria-controls\` attribute to the radio group.
+If the radio group controls any secondary content (for example, another form field), use this to provide an ID referring to the secondary content.",
+      "name": "ariaControls",
+      "optional": true,
+      "type": "string",
+    },
     Object {
       "description": "Adds \`aria-describedby\` to the component. If you're using this component within a form field,
 don't set this property because the form field component automatically sets it.
@@ -9648,6 +9683,11 @@ The return type of the function should be a promise that resolves to a list of v
           Object {
             "name": "inContextBrowseButton",
             "optional": false,
+            "type": "string",
+          },
+          Object {
+            "name": "inContextInputClearAriaLabel",
+            "optional": true,
             "type": "string",
           },
           Object {
@@ -10213,6 +10253,12 @@ in a slight, visible lag when scrolling complex pages.",
       "type": "string",
     },
     Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "filteringClearAriaLabel",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
       "description": "Specifies the placeholder to display in the filtering input if filtering is enabled.",
       "name": "filteringPlaceholder",
       "optional": true,
@@ -10528,7 +10574,7 @@ to the href of the clicked item so you'll have to do it yourself.
           Object {
             "name": "type",
             "optional": true,
-            "type": "\\"expandable-link-group\\" | \\"link\\" | \\"link-group\\"",
+            "type": "\\"expandable-link-group\\" | \\"link\\" | \\"link-group\\" | \\"section-header\\"",
           },
         ],
         "type": "object",
@@ -10631,6 +10677,13 @@ Object that represents a section within the navigation.
 - \`items\` (array) - Specifies the content of the section. You can use any valid item from this list.
     Although there is no technical limitation to the nesting level,
     our UX recommendation is to use only one level.
+
+#### Section Group
+Aggregates a set of items that are conceptually related to each other, and can be displayed under a single heading to provide further organization.
+You can nest sections, links, link groups and expandable link groups within a section group depending on your information architecture needs.
+- \`type\`: \`'section-group'\`.
+- \`title\` (string) - Specifies the text to display as a title of the section group.
+- \`items\` (array) - Specifies the content of the section header group. You can use \`Section\`, \`Link\`, \`LinkGroup\`, \`ExpandableLinkGroup\`.
 
 #### LinkGroup
 Object that represents a group of links.
@@ -11743,6 +11796,11 @@ character validation. You should use this property only when absolutely necessar
             "type": "string",
           },
           Object {
+            "name": "clearAriaLabel",
+            "optional": true,
+            "type": "string",
+          },
+          Object {
             "name": "duplicateKeyError",
             "optional": false,
             "type": "string",
@@ -12071,6 +12129,12 @@ in order to prevent the user from changing the filtering text.",
       "type": "string",
     },
     Object {
+      "description": "Label for the filtering input clear button.",
+      "name": "filteringClearAriaLabel",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
       "description": "Placeholder for the filtering input.",
       "name": "filteringPlaceholder",
       "optional": true,
@@ -12292,6 +12356,12 @@ scrolled out of the viewport.",
       "deprecatedTag": "Custom CSS is not supported. For other use cases, use [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).",
       "description": "Adds the specified classes to the root element of the component.",
       "name": "className",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "clearAriaLabel",
       "optional": true,
       "type": "string",
     },
@@ -12639,6 +12709,12 @@ scrolled out of the viewport.",
       "deprecatedTag": "Custom CSS is not supported. For other use cases, use [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).",
       "description": "Adds the specified classes to the root element of the component.",
       "name": "className",
+      "optional": true,
+      "type": "string",
+    },
+    Object {
+      "description": "Adds an \`aria-label\` to the clear button inside the search input.",
+      "name": "clearAriaLabel",
       "optional": true,
       "type": "string",
     },

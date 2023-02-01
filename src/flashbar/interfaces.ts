@@ -39,34 +39,40 @@ export interface FlashbarProps extends BaseComponentProps {
    * When a user clicks on this button the `onDismiss` handler is called.
    * * `dismissLabel` (string) - Specifies an `aria-label` for to the dismiss icon button for improved accessibility.
    * * `statusIconAriaLabel` (string) - Specifies an `aria-label` for to the status icon for improved accessibility.
-   * * `ariaRole` (boolean) - For flash messages added after page load, specifies how this message is communicated to assistive
+   * * `ariaRole` (string) - For flash messages added after page load, specifies how this message is communicated to assistive
    * technology. Use "status" for status updates or informational content. Use "alert" for important messages that need the
    * user's attention.
    * * `action` (ReactNode) - Specifies an action for the flash message. Although it is technically possible to insert any content,
    * our UX guidelines only allow you to add a button.
    * * `buttonText` (string) - Specifies that an action button should be displayed, with the specified text.
-   * When a user clicks on this button the `onButtonClick` handler is called. If the `action` property is set, this property is ignored.
+   * When a user clicks on this button the `onButtonClick` handler is called.
+   * If the `action` property is set, this property is ignored. **Deprecated**, replaced by `action`.
    * * `onButtonClick` (event => void) - Called when a user clicks on the action button. This is not called if you create a custom button
    *   using the `action` property. **Deprecated**, replaced by `action`.
-   * * `id` (string) - Specifies a unique flash message identifier. This property  is used in two ways:
+   * * `id` (string) - Specifies a unique flash message identifier. This property is used in two ways:
    *   1. As a [keys](https://reactjs.org/docs/lists-and-keys.html#keys) source for React rendering.
    *   2. To identify which flash message will be removed from the DOM when it is dismissed, to animate it out.
-   *
-   * @deprecated Replaced by `action`.
-   * @visualrefresh `id` property
    */
   items: ReadonlyArray<FlashbarProps.MessageDefinition>;
 }
 
-export interface StackedFlashbarProps {
-  stackItems: true;
-  ariaLabels?: StackedFlashbarProps.AriaLabels;
+export type FlashType = FlashbarProps.Type | 'progress';
+
+export interface CollapsibleFlashbarProps {
   items: ReadonlyArray<FlashbarProps.MessageDefinition>;
+  stackItems: boolean;
+  i18nStrings?: CollapsibleFlashbarProps.I18nStrings;
 }
 
-export namespace StackedFlashbarProps {
-  export interface AriaLabels {
-    stackCollapseLabel?: string;
-    stackExpandLabel?: string;
+export namespace CollapsibleFlashbarProps {
+  export interface I18nStrings {
+    ariaLabel: string;
+    toggleButtonAriaLabel: string;
+    toggleButtonText: string;
+    errorCountAriaLabel?: string;
+    warningCountAriaLabel?: string;
+    successCountAriaLabel?: string;
+    infoCountAriaLabel?: string;
+    inProgressCountAriaLabel?: string;
   }
 }
