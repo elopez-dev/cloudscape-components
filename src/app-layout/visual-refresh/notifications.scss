@@ -8,8 +8,7 @@
 @use '../../internal/generated/custom-css-properties/index.scss' as custom-props;
 
 .notifications {
-  grid-column: 3;
-  grid-row: 1;
+  grid-area: notifications;
   z-index: 825;
 
   /*
@@ -19,8 +18,6 @@
   navigation and tools drawers.
   */
   @include styles.media-breakpoint-up(styles.$breakpoint-x-small) {
-    margin: awsui.$space-xs 0;
-
     /*
     #{awsui.$space-xs} token needs to align with the $offsetTopWithNotifications 
     calculation in the layout CSS. 
@@ -28,10 +25,6 @@
     &.sticky-notifications {
       position: sticky;
       top: calc(var(#{custom-props.$offsetTop}) + #{awsui.$space-xs});
-    }
-
-    &:not(.has-notifications-content) {
-      margin: 0;
     }
   }
 
@@ -41,15 +34,8 @@
   vertical space from the sticky AppBar the subsequent adjacent sibling.
   */
   @include styles.media-breakpoint-down(styles.$breakpoint-x-small) {
-    grid-row: 2;
-    margin: awsui.$space-scaled-s 0;
-
     &.sticky-notifications {
       position: static;
-    }
-
-    &:not(.has-notifications-content) {
-      margin: 0;
     }
   }
 }
