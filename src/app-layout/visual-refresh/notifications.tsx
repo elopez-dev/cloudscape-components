@@ -11,7 +11,7 @@ import testutilStyles from '../test-classes/styles.css.js';
  * that the design tokens used are overridden with the appropriate values.
  */
 export default function Notifications() {
-  const { ariaLabels, hasNotificationsContent, notifications, notificationsElement, stickyNotifications } =
+  const { ariaLabels, notifications, notificationsElement, stickyNotifications } =
     useAppLayoutInternals();
 
   if (!notifications) {
@@ -25,7 +25,6 @@ export default function Notifications() {
       className={clsx(
         styles.notifications,
         {
-          [styles['has-notifications-content']]: hasNotificationsContent,
           [styles['sticky-notifications']]: stickyNotifications,
         },
         testutilStyles.notifications,
