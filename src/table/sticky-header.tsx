@@ -68,7 +68,11 @@ function StickyHeader(
       ref={secondaryWrapperRef}
       onScroll={onScroll}
     >
-      <table className={clsx(styles.table, styles['table-layout-fixed'])} role="table" ref={secondaryTableRef}>
+      <table
+        className={clsx(styles.table, styles['table-layout-fixed'], 'awsui-polaris-compact-mode', 'awsui-compact-mode')}
+        role="table"
+        ref={secondaryTableRef}
+      >
         <Thead ref={secondaryTheadRef} sticky={true} stuck={isStuck} showFocusRing={focusedColumn} {...theadProps} />
       </table>
     </div>
