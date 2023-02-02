@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import { applyDisplayName } from '../internal/utils/apply-display-name';
 import { ContentLayoutProps } from './interfaces';
 import { getBaseProps } from '../internal/base-component';
-import { useAppLayoutContext } from '../internal/context/app-layout-context';
 import useBaseComponent from '../internal/hooks/use-base-component';
 import { useDynamicOverlap } from '../internal/hooks/use-dynamic-overlap';
 import { useMergeRefs } from '../internal/hooks/use-merge-refs';
@@ -16,8 +15,6 @@ export { ContentLayoutProps };
 
 export default function ContentLayout({ children, disableOverlap, header, ...rest }: ContentLayoutProps) {
   const baseProps = getBaseProps(rest);
-  const { hasBreadcrumbs } = useAppLayoutContext();
-
   const rootElement = useRef<HTMLDivElement>(null);
   const { __internalRootRef } = useBaseComponent('ContentLayout');
   const mergedRef = useMergeRefs(rootElement, __internalRootRef);
@@ -49,17 +46,7 @@ export default function ContentLayout({ children, disableOverlap, header, ...res
         ref={overlapElement}
       />
 
-      {header && (
-        <div
-          className={clsx(
-            styles.header,
-            { [styles['has-breadcrumbs']]: isVisualRefresh && hasBreadcrumbs },
-            'awsui-context-content-header'
-          )}
-        >
-          {header}
-        </div>
-      )}
+      {header && <div className={clsx(styles.header, 'awsui-context-content-header')}>{header}</div>}
 
       <div className={styles.content}>{children}</div>
     </div>
