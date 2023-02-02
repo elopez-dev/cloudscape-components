@@ -27,10 +27,6 @@ div.background {
         z-index: 799;
       }
     }
-
-    @include styles.media-breakpoint-down(styles.$breakpoint-x-small) {
-      grid-row: 1 / span 6;
-    }
   }
 
   > .overlap {
