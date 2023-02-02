@@ -222,8 +222,8 @@ export namespace CardsProps {
   export type IsItemDisabled<T> = (item: T) => boolean;
 
   export interface AriaLabels<T> {
-    itemSelectionLabel: (data: CardsProps.SelectionState<T>, row: T) => string;
-    selectionGroupLabel: string;
+    itemSelectionLabel?: (data: CardsProps.SelectionState<T>, row: T) => string;
+    selectionGroupLabel?: string;
   }
   export interface Ref {
     /**

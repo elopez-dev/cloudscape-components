@@ -73,7 +73,7 @@ export interface AutosuggestProps
   /**
    * Specifies a function that generates the custom value indicator (for example, `Use "${value}"`).
    */
-  enteredTextLabel: AutosuggestProps.EnteredTextLabel;
+  enteredTextLabel?: AutosuggestProps.EnteredTextLabel;
 
   /**
    * Specifies the text that's displayed when there aren't any suggestions to display.

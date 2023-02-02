@@ -49,7 +49,7 @@ export interface AnnotationContextProps {
    * An object containing all the necessary localized strings required by
    * the component.
    */
-  i18nStrings: AnnotationContextProps.I18nStrings;
+  i18nStrings?: AnnotationContextProps.I18nStrings;
 }
 
 export namespace AnnotationContextProps {
@@ -67,14 +67,14 @@ export namespace AnnotationContextProps {
   export type Tutorial = TutorialPanelProps.Tutorial;
 
   export interface I18nStrings {
-    nextButtonText: string;
-    previousButtonText: string;
-    finishButtonText: string;
+    nextButtonText?: string;
+    previousButtonText?: string;
+    finishButtonText?: string;
 
-    labelDismissAnnotation: string;
-    labelHotspot: (openState: boolean, stepIndex: number, totalStepCount: number) => string;
+    labelDismissAnnotation?: string;
+    labelHotspot?: (openState: boolean, stepIndex: number, totalStepCount: number) => string;
 
-    stepCounterText: (stepIndex: number, totalStepCount: number) => string;
-    taskTitle: (taskIndex: number, taskTitle: string) => string;
+    stepCounterText?: (stepIndex: number, totalStepCount: number) => string;
+    taskTitle?: (taskIndex: number, taskTitle: string) => string;
   }
 }

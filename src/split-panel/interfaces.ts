@@ -30,21 +30,21 @@ export interface SplitPanelProps extends BaseComponentProps {
    * - `preferencesCancel` - The text of the preference modal cancel button.
    * - `resizeHandleAriaLabel` - The label of the resize handle aria label.
    */
-  i18nStrings: SplitPanelProps.I18nStrings;
+  i18nStrings?: SplitPanelProps.I18nStrings;
 }
 
 export namespace SplitPanelProps {
   export interface I18nStrings {
-    closeButtonAriaLabel: string;
-    openButtonAriaLabel: string;
-    preferencesTitle: string;
-    preferencesPositionLabel: string;
-    preferencesPositionDescription: string;
-    preferencesPositionSide: string;
-    preferencesPositionBottom: string;
-    preferencesConfirm: string;
-    preferencesCancel: string;
-    resizeHandleAriaLabel: string;
+    closeButtonAriaLabel?: string;
+    openButtonAriaLabel?: string;
+    preferencesTitle?: string;
+    preferencesPositionLabel?: string;
+    preferencesPositionDescription?: string;
+    preferencesPositionSide?: string;
+    preferencesPositionBottom?: string;
+    preferencesConfirm?: string;
+    preferencesCancel?: string;
+    resizeHandleAriaLabel?: string;
   }
 }
 

@@ -64,7 +64,7 @@ export interface TutorialPanelProps extends BaseComponentProps {
   /**
    * An object containing all the necessary localized strings required by the component.
    */
-  i18nStrings: TutorialPanelProps.I18nStrings;
+  i18nStrings?: TutorialPanelProps.I18nStrings;
 
   /**
    * Fired when the user clicks on the feedback link at the end of a tutorial.
@@ -188,34 +188,34 @@ export namespace TutorialPanelProps {
   }
 
   export interface I18nStrings {
-    loadingText: string;
+    loadingText?: string;
 
-    tutorialListTitle: string;
-    tutorialListDescription: React.ReactNode;
-    tutorialListDownloadLinkText: string;
+    tutorialListTitle?: string;
+    tutorialListDescription?: React.ReactNode;
+    tutorialListDownloadLinkText?: string;
 
-    tutorialCompletedText: string;
-    learnMoreLinkText: string;
+    tutorialCompletedText?: string;
+    learnMoreLinkText?: string;
 
-    startTutorialButtonText: string;
-    restartTutorialButtonText: string;
+    startTutorialButtonText?: string;
+    restartTutorialButtonText?: string;
 
-    completionScreenTitle: string;
+    completionScreenTitle?: string;
 
-    feedbackLinkText: string;
-    dismissTutorialButtonText: string;
+    feedbackLinkText?: string;
+    dismissTutorialButtonText?: string;
 
-    taskTitle: (taskIndex: number, taskTitle: string) => string;
-    stepTitle: (stepIndex: number, stepTitle: string) => string;
+    taskTitle?: (taskIndex: number, taskTitle: string) => string;
+    stepTitle?: (stepIndex: number, stepTitle: string) => string;
 
-    labelExitTutorial: string;
-    labelTotalSteps: (totalStepCount: number) => string;
-    labelLearnMoreExternalIcon: string;
+    labelExitTutorial?: string;
+    labelTotalSteps?: (totalStepCount: number) => string;
+    labelLearnMoreExternalIcon?: string;
 
-    labelsTaskStatus: {
-      pending: string;
-      'in-progress': string;
-      success: string;
+    labelsTaskStatus?: {
+      pending?: string;
+      'in-progress'?: string;
+      success?: string;
     };
 
     labelTutorialListDownloadLink?: string;

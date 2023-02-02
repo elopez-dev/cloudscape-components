@@ -59,12 +59,12 @@ export interface AttributeEditorProps<T> extends BaseComponentProps {
   /**
    * Specifies the text that's displayed in the add button.
    */
-  addButtonText: string;
+  addButtonText?: string;
 
   /**
    * Specifies the text that's displayed in the remove button.
    */
-  removeButtonText: string;
+  removeButtonText?: string;
 
   /**
    * Specifies the items that serve as the data source for all rows.
