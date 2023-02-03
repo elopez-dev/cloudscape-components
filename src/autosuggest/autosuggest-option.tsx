@@ -17,7 +17,7 @@ export interface AutosuggestOptionProps extends BaseComponentProps {
   option: AutosuggestItem;
   highlighted: boolean;
   highlightType: HighlightType;
-  enteredTextLabel: (value: string) => string;
+  enteredTextLabel?: (value: string) => string;
   virtualPosition?: number;
   padBottom?: boolean;
   screenReaderContent?: string;
@@ -50,7 +50,7 @@ const AutosuggestOption = (
 
   let optionContent;
   if (useEntered) {
-    optionContent = enteredTextLabel(option.value || '');
+    optionContent = enteredTextLabel?.(option.value || '');
   } else if (isParent) {
     optionContent = option.label;
   } else {

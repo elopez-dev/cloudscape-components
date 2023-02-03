@@ -12,7 +12,7 @@ interface NavigationProps {
   farthestStepIndex: number;
   allowSkipTo: boolean;
   hidden: boolean;
-  i18nStrings: WizardProps.I18nStrings;
+  i18nStrings?: WizardProps.I18nStrings;
   isVisualRefresh: boolean;
   isLoadingNextStep: boolean;
   onStepClick: (stepIndex: number) => void;
@@ -21,7 +21,7 @@ interface NavigationProps {
 }
 
 interface NavigationStepProps {
-  i18nStrings: WizardProps.I18nStrings;
+  i18nStrings?: WizardProps.I18nStrings;
   index: number;
   onStepClick: (stepIndex: number) => void;
   onSkipToClick: (stepIndex: number) => void;
@@ -51,7 +51,7 @@ export default function Navigation({
   return (
     <nav
       className={clsx(styles.navigation, hidden && styles.hidden, isVisualRefresh && styles.refresh)}
-      aria-label={i18nStrings.navigationAriaLabel}
+      aria-label={i18nStrings?.navigationAriaLabel}
     >
       <ul>
         {steps.map((step, index: number) =>
@@ -143,8 +143,8 @@ function NavigationStepVisualRefresh({
       <hr />
 
       <span className={clsx(styles.number, styles['navigation-link-label'])}>
-        {i18nStrings.stepNumberLabel && i18nStrings.stepNumberLabel(index + 1)}
-        {step.isOptional && <i>{` - ${i18nStrings.optional}`}</i>}
+        {i18nStrings?.stepNumberLabel && i18nStrings?.stepNumberLabel?.(index + 1)}
+        {step.isOptional && <i>{` - ${i18nStrings?.optional}`}</i>}
       </span>
 
       <a
@@ -195,8 +195,8 @@ function NavigationStepClassic({ i18nStrings, index, onStepClick, onSkipToClick,
         display="block"
         margin={{ bottom: 'xxs' }}
       >
-        {i18nStrings.stepNumberLabel && i18nStrings.stepNumberLabel(index + 1)}
-        {step.isOptional && <i>{` - ${i18nStrings.optional}`}</i>}
+        {i18nStrings?.stepNumberLabel && i18nStrings?.stepNumberLabel?.(index + 1)}
+        {step.isOptional && <i>{` - ${i18nStrings?.optional}`}</i>}
       </InternalBox>
       <div>
         {status === Statuses.Visited || status === Statuses.Next ? (

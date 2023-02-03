@@ -39,7 +39,7 @@ interface PropertyInputProps {
   customGroupsText: readonly GroupText[];
   disableFreeTextFiltering?: boolean;
   filteringProperties: readonly FilteringProperty[];
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
   onChangePropertyKey: (propertyKey: undefined | string) => void;
   onLoadItems?: NonCancelableEventHandler<LoadItemsDetail>;
   propertyKey: undefined | string;
@@ -82,7 +82,7 @@ function PropertyInput({
   });
 
   const allPropertiesOption = {
-    label: i18nStrings.allPropertiesLabel,
+    label: i18nStrings?.allPropertiesLabel,
     value: undefined,
   };
   if (!disableFreeTextFiltering) {
@@ -107,7 +107,7 @@ function PropertyInput({
 
 interface OperatorInputProps {
   filteringProperties: readonly FilteringProperty[];
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
   onChangeOperator: (operator: ComparisonOperator) => void;
   operator: undefined | ComparisonOperator;
   propertyKey: undefined | string;
@@ -149,7 +149,7 @@ interface ValueInputProps {
   asyncProps: DropdownStatusProps;
   filteringOptions: readonly FilteringOption[];
   filteringProperties: readonly FilteringProperty[];
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
   onChangeValue: (value: string) => void;
   onLoadItems?: NonCancelableEventHandler<LoadItemsDetail>;
   operator: undefined | ComparisonOperator;
@@ -184,9 +184,9 @@ function ValueInput({
     <OperatorForm value={value} onChange={onChangeValue} operator={operator} />
   ) : (
     <InternalAutosuggest
-      enteredTextLabel={i18nStrings.enteredTextLabel}
+      enteredTextLabel={i18nStrings?.enteredTextLabel}
       value={mathedOption?.label ?? value ?? ''}
-      clearAriaLabel={i18nStrings.clearAriaLabel}
+      clearAriaLabel={i18nStrings?.clearAriaLabel}
       onChange={e => onChangeValue(e.detail.value)}
       disabled={!operator}
       options={valueOptions}
@@ -205,7 +205,7 @@ interface TokenEditorProps {
   expandToViewport?: boolean;
   filteringOptions: readonly FilteringOption[];
   filteringProperties: readonly FilteringProperty[];
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
   onLoadItems?: NonCancelableEventHandler<LoadItemsDetail>;
   setToken: (newToken: Token) => void;
   token: Token;
@@ -261,16 +261,16 @@ export function TokenEditor({
       ref={popoverRef}
       className={styles['token-label']}
       triggerType="text"
-      header={i18nStrings.editTokenHeader}
+      header={i18nStrings?.editTokenHeader}
       size="large"
       position="right"
-      dismissAriaLabel={i18nStrings.dismissAriaLabel}
+      dismissAriaLabel={i18nStrings?.dismissAriaLabel}
       __onOpen={() => setTemporaryToken(token)}
       renderWithPortal={expandToViewport}
       content={
         <div className={styles['token-editor']}>
           <div className={styles['token-editor-form']}>
-            <InternalFormField label={i18nStrings.propertyText} className={styles['token-editor-field-property']}>
+            <InternalFormField label={i18nStrings?.propertyText} className={styles['token-editor-field-property']}>
               <PropertyInput
                 propertyKey={propertyKey}
                 onChangePropertyKey={onChangePropertyKey}
@@ -283,7 +283,7 @@ export function TokenEditor({
               />
             </InternalFormField>
 
-            <InternalFormField label={i18nStrings.operatorText} className={styles['token-editor-field-operator']}>
+            <InternalFormField label={i18nStrings?.operatorText} className={styles['token-editor-field-operator']}>
               <OperatorInput
                 propertyKey={propertyKey}
                 operator={operator}
@@ -293,7 +293,7 @@ export function TokenEditor({
               />
             </InternalFormField>
 
-            <InternalFormField label={i18nStrings.valueText} className={styles['token-editor-field-value']}>
+            <InternalFormField label={i18nStrings?.valueText} className={styles['token-editor-field-value']}>
               <ValueInput
                 propertyKey={propertyKey}
                 operator={operator}
@@ -310,7 +310,7 @@ export function TokenEditor({
 
           <div className={styles['token-editor-actions']}>
             <InternalButton variant="link" className={styles['token-editor-cancel']} onClick={closePopover}>
-              {i18nStrings.cancelActionText}
+              {i18nStrings?.cancelActionText}
             </InternalButton>
             <InternalButton
               className={styles['token-editor-submit']}
@@ -319,7 +319,7 @@ export function TokenEditor({
                 closePopover();
               }}
             >
-              {i18nStrings.applyActionText}
+              {i18nStrings?.applyActionText}
             </InternalButton>
           </div>
         </div>

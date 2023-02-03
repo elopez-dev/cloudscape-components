@@ -17,13 +17,13 @@ import { LightThemes, DarkThemes } from './ace-themes';
 import { CodeEditorProps } from './interfaces';
 
 interface PreferencesModali18nStrings {
-  header: string;
-  cancel: string;
-  confirm: string;
-  wrapLines: string;
-  theme: string;
-  lightThemes: string;
-  darkThemes: string;
+  header?: string;
+  cancel?: string;
+  confirm?: string;
+  wrapLines?: string;
+  theme?: string;
+  lightThemes?: string;
+  darkThemes?: string;
 }
 
 interface PreferencesModalProps {
@@ -74,7 +74,7 @@ export default (props: PreferencesModalProps) => {
         visible={true}
         onDismiss={props.onDismiss}
         header={props.i18nStrings.header}
-        closeAriaLabel={props.i18nStrings.cancel}
+        closeAriaLabel={props.i18nStrings?.cancel}
         footer={
           <InternalBox float="right">
             <InternalSpaceBetween direction="horizontal" size="xs">

@@ -14,7 +14,7 @@ interface PorpertyEditorProps<TokenValue> {
   operatorForm: ExtendedOperatorForm<TokenValue>;
   onCancel: () => void;
   onSubmit: (value: Token) => void;
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
 }
 
 export function PropertyEditor<TokenValue = any>({
@@ -38,10 +38,10 @@ export function PropertyEditor<TokenValue = any>({
 
       <div className={styles['property-editor-actions']}>
         <InternalButton variant="link" className={styles['property-editor-cancel']} onClick={onCancel}>
-          {i18nStrings.cancelActionText}
+          {i18nStrings?.cancelActionText}
         </InternalButton>
         <InternalButton className={styles['property-editor-submit']} onClick={submitToken}>
-          {i18nStrings.applyActionText}
+          {i18nStrings?.applyActionText}
         </InternalButton>
       </div>
     </div>

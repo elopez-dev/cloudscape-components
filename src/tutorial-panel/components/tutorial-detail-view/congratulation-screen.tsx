@@ -25,7 +25,7 @@ export function CongratulationScreen({ children, onFeedbackClick, i18nStrings }:
             type="success"
             className={styles['congratulation-message--status']}
           />
-          <div className={styles['completion-screen-title']}>{i18nStrings.completionScreenTitle}</div>
+          <div className={styles['completion-screen-title']}>{i18nStrings?.completionScreenTitle}</div>
         </div>
         <InternalBox color="text-body-secondary">
           <div
@@ -42,7 +42,7 @@ export function CongratulationScreen({ children, onFeedbackClick, i18nStrings }:
       <div className={styles.divider} />
 
       <InternalLink onFollow={onFeedbackClick} className={styles['feedback-link']}>
-        {i18nStrings.feedbackLinkText}
+        {i18nStrings?.feedbackLinkText}
       </InternalLink>
     </InternalSpaceBetween>
   );

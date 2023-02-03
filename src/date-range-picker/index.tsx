@@ -47,7 +47,7 @@ function renderDateRange(
 
   const formatted =
     range.type === 'relative' ? (
-      formatRelativeRange(range)
+      formatRelativeRange?.(range)
     ) : (
       <BreakSpaces text={formatDateRange(range.startDate, range.endDate, timeOffset)} />
     );
@@ -116,8 +116,8 @@ const DateRangePicker = React.forwardRef(
 
     const baseProps = getBaseProps(rest);
     const { invalid, controlId, ariaDescribedby, ariaLabelledby } = useFormFieldContext({
-      ariaLabelledby: rest.ariaLabelledby ?? i18nStrings.ariaLabelledby,
-      ariaDescribedby: rest.ariaDescribedby ?? i18nStrings.ariaDescribedby,
+      ariaLabelledby: rest.ariaLabelledby ?? i18nStrings?.ariaLabelledby,
+      ariaDescribedby: rest.ariaDescribedby ?? i18nStrings?.ariaDescribedby,
       ...rest,
     });
     const isSingleGrid = useMobile();
@@ -210,7 +210,7 @@ const DateRangePicker = React.forwardRef(
           ref={triggerRef}
           id={controlId}
           invalid={invalid}
-          ariaLabel={i18nStrings.ariaLabel}
+          ariaLabel={i18nStrings?.ariaLabel}
           ariaDescribedby={ariaDescribedby}
           ariaLabelledby={ariaLabelledby}
           className={clsx(styles.label, {
@@ -230,7 +230,7 @@ const DateRangePicker = React.forwardRef(
             <span className={styles['icon-wrapper']}>
               <InternalIcon name="calendar" variant={disabled || readOnly ? 'disabled' : 'normal'} />
             </span>
-            {renderDateRange(value, placeholder ?? '', i18nStrings.formatRelativeRange, normalizedTimeOffset)}
+            {renderDateRange(value, placeholder ?? '', i18nStrings?.formatRelativeRange, normalizedTimeOffset)}
           </span>
         </ButtonTrigger>
       </div>

@@ -17,7 +17,7 @@ interface WizardFormProps {
   activeStepIndex: number;
   isVisualRefresh: boolean;
   showCollapsedSteps: boolean;
-  i18nStrings: WizardProps.I18nStrings;
+  i18nStrings?: WizardProps.I18nStrings;
   isPrimaryLoading: boolean;
   allowSkipTo: boolean;
   secondaryActions?: React.ReactNode;
@@ -57,8 +57,8 @@ export default function WizardForm({
 
   const showSkipTo = allowSkipTo && skipToTargetIndex !== -1;
   const skipToButtonText =
-    skipToTargetIndex !== -1 && i18nStrings.skipToButtonLabel
-      ? i18nStrings.skipToButtonLabel(steps[skipToTargetIndex], skipToTargetIndex + 1)
+    skipToTargetIndex !== -1 && i18nStrings?.skipToButtonLabel
+      ? i18nStrings?.skipToButtonLabel(steps[skipToTargetIndex], skipToTargetIndex + 1)
       : undefined;
 
   return (
@@ -71,12 +71,12 @@ export default function WizardForm({
             isVisualRefresh && isMobile && styles['collapsed-steps-extra-padding']
           )}
         >
-          {i18nStrings.collapsedStepsLabel(activeStepIndex + 1, steps.length)}
+          {i18nStrings?.collapsedStepsLabel?.(activeStepIndex + 1, steps.length)}
         </div>
         <InternalHeader className={styles['form-header-component']} variant="h1" description={description} info={info}>
           <span className={styles['form-header-component-wrapper']} tabIndex={-1} ref={stepHeaderRef} {...focusVisible}>
             {title}
-            {isOptional && <i>{` - ${i18nStrings.optional}`}</i>}
+            {isOptional && <i>{` - ${i18nStrings?.optional}`}</i>}
           </span>
         </InternalHeader>
       </WizardFormHeader>
@@ -84,9 +84,9 @@ export default function WizardForm({
         className={clsx(styles['form-component'])}
         actions={
           <WizardActions
-            cancelButtonText={i18nStrings.cancelButton}
-            primaryButtonText={isLastStep ? i18nStrings.submitButton : i18nStrings.nextButton}
-            previousButtonText={i18nStrings.previousButton}
+            cancelButtonText={i18nStrings?.cancelButton}
+            primaryButtonText={isLastStep ? i18nStrings?.submitButton : i18nStrings?.nextButton}
+            previousButtonText={i18nStrings?.previousButton}
             onCancelClick={onCancelClick}
             onPreviousClick={onPreviousClick}
             onPrimaryClick={onPrimaryClick}
@@ -99,7 +99,7 @@ export default function WizardForm({
         }
         secondaryActions={secondaryActions}
         errorText={errorText}
-        errorIconAriaLabel={i18nStrings.errorIconAriaLabel}
+        errorIconAriaLabel={i18nStrings?.errorIconAriaLabel}
       >
         {content}
       </InternalForm>

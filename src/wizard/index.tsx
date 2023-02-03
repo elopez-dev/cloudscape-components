@@ -80,7 +80,7 @@ export default function Wizard({
     );
   }
 
-  if (allowSkipTo && !i18nStrings.skipToButtonLabel) {
+  if (allowSkipTo && !i18nStrings?.skipToButtonLabel) {
     warnOnce(
       'Wizard',
       `You have set \`allowSkipTo\` but you have not provided \`i18nStrings.skipToButtonLabel\`. The skip-to button will not be rendered.`

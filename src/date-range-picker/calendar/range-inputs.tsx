@@ -24,7 +24,7 @@ export interface RangeInputsProps extends BaseComponentProps {
   onChangeEndDate: (value: string) => void;
   endTime: string;
   onChangeEndTime: (value: string) => void;
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
   dateOnly: boolean;
   timeInputFormat: TimeInputProps.Format;
 }
@@ -43,10 +43,10 @@ export default function RangeInputs({
   timeInputFormat,
 }: RangeInputsProps) {
   return (
-    <InternalFormField constraintText={i18nStrings.dateTimeConstraintText}>
+    <InternalFormField constraintText={i18nStrings?.dateTimeConstraintText}>
       <div className={styles['date-and-time-container']}>
         <div className={styles['date-and-time-wrapper']}>
-          <InternalFormField label={i18nStrings.startDateLabel} stretch={true}>
+          <InternalFormField label={i18nStrings?.startDateLabel} stretch={true}>
             <InternalDateInput
               value={startDate}
               className={styles['start-date-input']}
@@ -55,7 +55,7 @@ export default function RangeInputs({
             />
           </InternalFormField>
           {!dateOnly && (
-            <InternalFormField label={i18nStrings.startTimeLabel} stretch={true}>
+            <InternalFormField label={i18nStrings?.startTimeLabel} stretch={true}>
               <InternalTimeInput
                 value={startTime}
                 onChange={event => onChangeStartTime(event.detail.value)}
@@ -68,7 +68,7 @@ export default function RangeInputs({
         </div>
 
         <div className={styles['date-and-time-wrapper']}>
-          <InternalFormField label={i18nStrings.endDateLabel} stretch={true}>
+          <InternalFormField label={i18nStrings?.endDateLabel} stretch={true}>
             <InternalDateInput
               value={endDate}
               className={styles['end-date-input']}
@@ -77,7 +77,7 @@ export default function RangeInputs({
             />
           </InternalFormField>
           {!dateOnly && (
-            <InternalFormField label={i18nStrings.endTimeLabel} stretch={true}>
+            <InternalFormField label={i18nStrings?.endTimeLabel} stretch={true}>
               <InternalTimeInput
                 value={endTime}
                 onChange={event => onChangeEndTime(event.detail.value)}

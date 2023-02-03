@@ -137,8 +137,8 @@ export default function InternalTopNavigation({
                     type: 'button',
                     iconName: isSearchExpanded ? 'close' : 'search',
                     ariaLabel: isSearchExpanded
-                      ? i18nStrings.searchDismissIconAriaLabel
-                      : i18nStrings.searchIconAriaLabel,
+                      ? i18nStrings?.searchDismissIconAriaLabel
+                      : i18nStrings?.searchIconAriaLabel,
                     onClick: onSearchUtilityClick,
                   }}
                 />
@@ -216,7 +216,7 @@ export default function InternalTopNavigation({
                   offsetRight="l"
                   ref={!isVirtual ? overflowMenuTriggerRef : undefined}
                 >
-                  {i18nStrings.overflowMenuTriggerText}
+                  {i18nStrings?.overflowMenuTriggerText}
                 </ButtonTrigger>
               </div>
             )}
@@ -234,9 +234,9 @@ export default function InternalTopNavigation({
         {menuTriggerVisible && overflowMenuOpen && (
           <div className={styles['overflow-menu-drawer']}>
             <OverflowMenu
-              headerText={i18nStrings.overflowMenuTitleText}
-              dismissIconAriaLabel={i18nStrings.overflowMenuDismissIconAriaLabel}
-              backIconAriaLabel={i18nStrings.overflowMenuBackIconAriaLabel}
+              headerText={i18nStrings?.overflowMenuTitleText}
+              dismissIconAriaLabel={i18nStrings?.overflowMenuDismissIconAriaLabel}
+              backIconAriaLabel={i18nStrings?.overflowMenuBackIconAriaLabel}
               items={utilities.filter(
                 (utility, i) =>
                   (!responsiveState.hideUtilities || responsiveState.hideUtilities.indexOf(i) !== -1) &&

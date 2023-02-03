@@ -265,13 +265,13 @@ export default function CodeEditor(props: CodeEditorProps) {
     >
       {props.loading && (
         <LoadingScreen>
-          <LiveRegion visible={true}>{i18nStrings.loadingState}</LiveRegion>
+          <LiveRegion visible={true}>{i18nStrings?.loadingState}</LiveRegion>
         </LoadingScreen>
       )}
 
       {!ace && !props.loading && (
-        <ErrorScreen recoveryText={i18nStrings.errorStateRecovery} onRecoveryClick={props.onRecoveryClick}>
-          {i18nStrings.errorState}
+        <ErrorScreen recoveryText={i18nStrings?.errorStateRecovery} onRecoveryClick={props.onRecoveryClick}>
+          {i18nStrings?.errorState}
         </ErrorScreen>
       )}
 
@@ -292,13 +292,13 @@ export default function CodeEditor(props: CodeEditorProps) {
               onKeyDown={onEditorKeydown}
               tabIndex={0}
               role="group"
-              aria-label={i18nStrings.editorGroupAriaLabel}
+              aria-label={i18nStrings?.editorGroupAriaLabel}
             />
           </ResizableBox>
-          <div role="group" aria-label={i18nStrings.statusBarGroupAriaLabel}>
+          <div role="group" aria-label={i18nStrings?.statusBarGroupAriaLabel}>
             <StatusBar
               languageLabel={languageLabel}
-              cursorPosition={i18nStrings.cursorPosition(cursorPosition.row + 1, cursorPosition.column + 1)}
+              cursorPosition={i18nStrings?.cursorPosition?.(cursorPosition.row + 1, cursorPosition.column + 1)}
               errorCount={errorCount}
               warningCount={warningCount}
               paneStatus={paneStatus}
@@ -323,8 +323,8 @@ export default function CodeEditor(props: CodeEditorProps) {
               onAnnotationClear={onAnnotationClear}
               onClose={onPaneClose}
               onAllowlist={shouldHandleFocus}
-              cursorPositionLabel={i18nStrings.cursorPosition}
-              closeButtonAriaLabel={i18nStrings.paneCloseButtonAriaLabel}
+              cursorPositionLabel={i18nStrings?.cursorPosition}
+              closeButtonAriaLabel={i18nStrings?.paneCloseButtonAriaLabel}
             />
           </div>
           {isPreferencesModalVisible && (
@@ -335,13 +335,13 @@ export default function CodeEditor(props: CodeEditorProps) {
               preferences={props.preferences}
               defaultTheme={defaultTheme}
               i18nStrings={{
-                header: i18nStrings.preferencesModalHeader,
-                cancel: i18nStrings.preferencesModalCancel,
-                confirm: i18nStrings.preferencesModalConfirm,
-                wrapLines: i18nStrings.preferencesModalWrapLines,
-                theme: i18nStrings.preferencesModalTheme,
-                lightThemes: i18nStrings.preferencesModalLightThemes,
-                darkThemes: i18nStrings.preferencesModalDarkThemes,
+                header: i18nStrings?.preferencesModalHeader,
+                cancel: i18nStrings?.preferencesModalCancel,
+                confirm: i18nStrings?.preferencesModalConfirm,
+                wrapLines: i18nStrings?.preferencesModalWrapLines,
+                theme: i18nStrings?.preferencesModalTheme,
+                lightThemes: i18nStrings?.preferencesModalLightThemes,
+                darkThemes: i18nStrings?.preferencesModalDarkThemes,
               }}
             />
           )}

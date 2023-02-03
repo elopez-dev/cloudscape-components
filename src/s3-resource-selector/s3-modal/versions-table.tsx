@@ -41,7 +41,7 @@ export function VersionsTable({
       i18nStrings={{
         ...getSharedI18Strings(i18nStrings),
         header: i18nStrings?.selectionVersions,
-        filteringAriaLabel: i18nStrings?.labelFiltering(i18nStrings?.selectionVersions),
+        filteringAriaLabel: i18nStrings?.labelFiltering?.(i18nStrings?.selectionVersions ?? ''),
         filteringPlaceholder: i18nStrings?.selectionVersionsSearchPlaceholder,
         loadingText: i18nStrings?.selectionVersionsLoading,
         emptyText: i18nStrings?.selectionVersionsNoItems,
@@ -54,7 +54,7 @@ export function VersionsTable({
         {
           id: 'ID',
           header: i18nStrings?.columnVersionID,
-          ariaLabel: getColumnAriaLabel(i18nStrings, i18nStrings?.columnVersionID),
+          ariaLabel: getColumnAriaLabel?.(i18nStrings, i18nStrings?.columnVersionID),
           sortingField: 'VersionId',
           cell: item => item.VersionId,
           minWidth: '250px',

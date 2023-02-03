@@ -11,13 +11,13 @@ import { CodeEditorProps } from './interfaces';
 
 interface StatusBarProps {
   languageLabel: string;
-  cursorPosition: string;
+  cursorPosition?: string;
   paneStatus: string;
   errorsTabRef: React.RefObject<HTMLButtonElement>;
   warningsTabRef: React.RefObject<HTMLButtonElement>;
   isTabFocused: boolean;
   paneId: string;
-  i18nStrings: CodeEditorProps.I18nStrings;
+  i18nStrings?: CodeEditorProps.I18nStrings;
   errorCount: number;
   warningCount: number;
   isRefresh: boolean;
@@ -57,8 +57,8 @@ function InternalStatusBar({
   minifyCounters,
   isRefresh,
 }: InternalStatusBarProps) {
-  const errorText = `${i18nStrings.errorsTab}: ${errorCount}`;
-  const warningText = `${i18nStrings.warningsTab}: ${warningCount}`;
+  const errorText = `${i18nStrings?.errorsTab}: ${errorCount}`;
+  const warningText = `${i18nStrings?.warningsTab}: ${warningCount}`;
 
   // Virtual status bar is inaccessible for screen readers and keyboard interactions.
 
@@ -126,7 +126,7 @@ function InternalStatusBar({
             variant="icon"
             iconName="settings"
             iconAlt="Settings"
-            ariaLabel={i18nStrings.preferencesButtonAriaLabel}
+            ariaLabel={i18nStrings?.preferencesButtonAriaLabel}
             onClick={onPreferencesOpen}
             __nativeAttributes={{
               tabIndex: paneStatus !== 'hidden' && isTabFocused ? -1 : undefined,

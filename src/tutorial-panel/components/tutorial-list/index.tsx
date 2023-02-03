@@ -58,10 +58,10 @@ export default function TutorialList({
       <InternalSpaceBetween size="s">
         <InternalSpaceBetween size="m">
           <InternalBox variant="h2" fontSize={isRefresh ? 'heading-m' : 'heading-l'} padding={{ bottom: 'n' }}>
-            {i18nStrings.tutorialListTitle}
+            {i18nStrings?.tutorialListTitle}
           </InternalBox>
           <InternalBox variant="p" color="text-body-secondary" padding="n">
-            {i18nStrings.tutorialListDescription}
+            {i18nStrings?.tutorialListDescription}
           </InternalBox>
         </InternalSpaceBetween>
         <InternalSpaceBetween size="l">
@@ -71,11 +71,11 @@ export default function TutorialList({
             target="_blank"
             rel="noopener noreferrer"
             className={styles['download-link']}
-            aria-label={i18nStrings.labelTutorialListDownloadLink}
+            aria-label={i18nStrings?.labelTutorialListDownloadLink}
           >
             <InternalIcon name="download" />
             <InternalBox padding={{ left: 'xs' }} color="inherit" fontWeight="bold" display="inline">
-              {i18nStrings.tutorialListDownloadLinkText}
+              {i18nStrings?.tutorialListDownloadLinkText}
             </InternalBox>
           </a>
 
@@ -86,7 +86,7 @@ export default function TutorialList({
         */}
           {loading ? (
             <InternalStatusIndicator type="loading">
-              <LiveRegion visible={true}>{i18nStrings.loadingText}</LiveRegion>
+              <LiveRegion visible={true}>{i18nStrings?.loadingText}</LiveRegion>
             </InternalStatusIndicator>
           ) : (
             <>
@@ -168,7 +168,7 @@ function Tutorial({
 
         {tutorial.completed ? (
           <InternalStatusIndicator __size="inherit" type="success" className={styles.completed} wrapText={true}>
-            {i18nStrings.tutorialCompletedText}
+            {i18nStrings?.tutorialCompletedText}
           </InternalStatusIndicator>
         ) : null}
       </InternalSpaceBetween>
@@ -198,11 +198,11 @@ function Tutorial({
                     <InternalLink
                       href={tutorial.learnMoreUrl}
                       className={styles['learn-more-link']}
-                      externalIconAriaLabel={i18nStrings.labelLearnMoreExternalIcon}
-                      ariaLabel={i18nStrings.labelLearnMoreLink}
+                      externalIconAriaLabel={i18nStrings?.labelLearnMoreExternalIcon}
+                      ariaLabel={i18nStrings?.labelLearnMoreLink}
                       external={true}
                     >
-                      {i18nStrings.learnMoreLinkText}
+                      {i18nStrings?.learnMoreLinkText}
                     </InternalLink>
                   )}
                 </InternalSpaceBetween>
@@ -215,7 +215,7 @@ function Tutorial({
                   formAction="none"
                   className={styles.start}
                 >
-                  {tutorial.completed ? i18nStrings.restartTutorialButtonText : i18nStrings.startTutorialButtonText}
+                  {tutorial.completed ? i18nStrings?.restartTutorialButtonText : i18nStrings?.startTutorialButtonText}
                 </InternalButton>
               </InternalBox>
             </InternalSpaceBetween>

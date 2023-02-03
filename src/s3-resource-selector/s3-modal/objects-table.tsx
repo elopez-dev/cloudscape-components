@@ -49,7 +49,7 @@ export function ObjectsTable({
       i18nStrings={{
         ...getSharedI18Strings(i18nStrings),
         header: i18nStrings?.selectionObjects,
-        filteringAriaLabel: i18nStrings?.labelFiltering(i18nStrings?.selectionObjects),
+        filteringAriaLabel: i18nStrings?.labelFiltering?.(i18nStrings?.selectionObjects ?? ''),
         filteringPlaceholder: i18nStrings?.selectionObjectsSearchPlaceholder,
         loadingText: i18nStrings?.selectionObjectsLoading,
         emptyText: i18nStrings?.selectionObjectsNoItems,

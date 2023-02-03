@@ -161,7 +161,7 @@ const TagEditor = React.forwardRef(
     const definition = useMemo(
       () => [
         {
-          label: i18nStrings.keyHeader,
+          label: i18nStrings?.keyHeader,
           control: ({ tag }: InternalTag, row: number) => (
             <TagControl
               row={row}
@@ -169,13 +169,13 @@ const TagEditor = React.forwardRef(
               readOnly={tag.existing}
               limit={200}
               defaultOptions={[]}
-              placeholder={i18nStrings.keyPlaceholder}
-              errorText={i18nStrings.keysSuggestionError}
-              loadingText={i18nStrings.keysSuggestionLoading}
-              suggestionText={i18nStrings.keySuggestion}
-              tooManySuggestionText={i18nStrings.tooManyKeysSuggestion}
-              enteredTextLabel={i18nStrings.enteredKeyLabel}
-              clearAriaLabel={i18nStrings.clearAriaLabel}
+              placeholder={i18nStrings?.keyPlaceholder}
+              errorText={i18nStrings?.keysSuggestionError}
+              loadingText={i18nStrings?.keysSuggestionLoading}
+              suggestionText={i18nStrings?.keySuggestion}
+              tooManySuggestionText={i18nStrings?.tooManyKeysSuggestion}
+              enteredTextLabel={i18nStrings?.enteredKeyLabel}
+              clearAriaLabel={i18nStrings?.clearAriaLabel}
               onRequest={keysRequest}
               onChange={onKeyChange}
               onBlur={onKeyBlur}
@@ -190,21 +190,21 @@ const TagEditor = React.forwardRef(
         {
           label: (
             <>
-              {i18nStrings.valueHeader} - <i>{i18nStrings.optional}</i>
+              {i18nStrings?.valueHeader} - <i>{i18nStrings?.optional}</i>
             </>
           ),
           control: ({ tag }: InternalTag, row: number) =>
             tag.markedForRemoval ? (
               <div role="alert">
                 <InternalBox margin={{ top: 'xxs' }}>
-                  {i18nStrings.undoPrompt}{' '}
+                  {i18nStrings?.undoPrompt}{' '}
                   <UndoButton
                     onClick={() => onUndoRemoval(row)}
                     ref={elem => {
                       undoButtonRefs.current[row] = elem;
                     }}
                   >
-                    {i18nStrings.undoButton}
+                    {i18nStrings?.undoButton}
                   </UndoButton>
                 </InternalBox>
               </div>
@@ -215,13 +215,13 @@ const TagEditor = React.forwardRef(
                 readOnly={false}
                 limit={200}
                 defaultOptions={tag.valueSuggestionOptions ?? []}
-                placeholder={i18nStrings.valuePlaceholder}
-                errorText={i18nStrings.valuesSuggestionError}
-                loadingText={i18nStrings.valuesSuggestionLoading}
-                suggestionText={i18nStrings.valueSuggestion}
-                tooManySuggestionText={i18nStrings.tooManyValuesSuggestion}
-                enteredTextLabel={i18nStrings.enteredValueLabel}
-                clearAriaLabel={i18nStrings.clearAriaLabel}
+                placeholder={i18nStrings?.valuePlaceholder}
+                errorText={i18nStrings?.valuesSuggestionError}
+                loadingText={i18nStrings?.valuesSuggestionLoading}
+                suggestionText={i18nStrings?.valueSuggestion}
+                tooManySuggestionText={i18nStrings?.tooManyValuesSuggestion}
+                enteredTextLabel={i18nStrings?.enteredValueLabel}
+                clearAriaLabel={i18nStrings?.clearAriaLabel}
                 filteringKey={tag.key}
                 onRequest={valuesRequest && (value => valuesRequest(tag.key, value))}
                 onChange={onValueChange}
@@ -240,7 +240,7 @@ const TagEditor = React.forwardRef(
       return (
         <div className={styles.root} ref={baseComponentProps.__internalRootRef}>
           <InternalStatusIndicator className={styles.loading} type="loading">
-            <LiveRegion visible={true}>{i18nStrings.loading}</LiveRegion>
+            <LiveRegion visible={true}>{i18nStrings?.loading}</LiveRegion>
           </InternalStatusIndicator>
         </div>
       );
@@ -257,19 +257,19 @@ const TagEditor = React.forwardRef(
         isItemRemovable={isItemRemovable}
         onAddButtonClick={onAddButtonClick}
         onRemoveButtonClick={onRemoveButtonClick}
-        addButtonText={i18nStrings.addButton}
-        removeButtonText={i18nStrings.removeButton}
+        addButtonText={i18nStrings?.addButton}
+        removeButtonText={i18nStrings?.removeButton}
         disableAddButton={remainingTags <= 0}
-        empty={i18nStrings.emptyTags}
+        empty={i18nStrings?.emptyTags}
         additionalInfo={
           remainingTags < 0 ? (
-            <FormFieldError errorIconAriaLabel={i18nStrings.errorIconAriaLabel}>
-              {i18nStrings.tagLimitExceeded(tagLimit) ?? ''}
+            <FormFieldError errorIconAriaLabel={i18nStrings?.errorIconAriaLabel}>
+              {i18nStrings?.tagLimitExceeded?.(tagLimit) ?? ''}
             </FormFieldError>
           ) : remainingTags === 0 ? (
-            i18nStrings.tagLimitReached(tagLimit) ?? ''
+            i18nStrings?.tagLimitReached?.(tagLimit) ?? ''
           ) : (
-            i18nStrings.tagLimit(remainingTags, tagLimit)
+            i18nStrings?.tagLimit?.(remainingTags, tagLimit)
           )
         }
         definition={definition}

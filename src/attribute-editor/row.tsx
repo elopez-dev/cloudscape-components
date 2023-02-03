@@ -22,7 +22,7 @@ export interface RowProps<T> {
   i18nStrings: AttributeEditorProps.I18nStrings | undefined;
   index: number;
   removable: boolean;
-  removeButtonText: string;
+  removeButtonText?: string;
   removeButtonRefs: Array<ButtonProps.Ref | undefined>;
   onRemoveButtonClick?: NonCancelableEventHandler<AttributeEditorProps.RemoveButtonClickDetail>;
 }

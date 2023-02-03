@@ -30,7 +30,6 @@ export interface DateRangePickerDropdownProps
     | 'value'
     | 'relativeOptions'
     | 'showClearButton'
-    | 'i18nStrings'
     | 'dateOnly'
     | 'timeInputFormat'
     | 'rangeSelectorMode'
@@ -40,6 +39,7 @@ export interface DateRangePickerDropdownProps
   startOfWeek: number | undefined;
   onDropdownClose: () => void;
   isSingleGrid: boolean;
+  i18nStrings: DateRangePickerProps['i18nStrings'];
 
   ariaLabelledby?: string;
   ariaDescribedby?: string;
@@ -140,9 +140,9 @@ export function DateRangePickerDropdown({
           tabIndex={0}
           role="dialog"
           aria-modal="true"
-          aria-label={i18nStrings.ariaLabel}
-          aria-labelledby={ariaLabelledby ?? i18nStrings.ariaLabelledby}
-          aria-describedby={ariaDescribedby ?? i18nStrings.ariaDescribedby}
+          aria-label={i18nStrings?.ariaLabel}
+          aria-labelledby={ariaLabelledby ?? i18nStrings?.ariaLabelledby}
+          aria-describedby={ariaDescribedby ?? i18nStrings?.ariaDescribedby}
         >
           <div
             className={clsx(styles['dropdown-content'], {
@@ -196,7 +196,7 @@ export function DateRangePickerDropdown({
                 >
                   {!validationResult.valid && (
                     <>
-                      <InternalAlert type="error" statusIconAriaLabel={i18nStrings.errorIconAriaLabel}>
+                      <InternalAlert type="error" statusIconAriaLabel={i18nStrings?.errorIconAriaLabel}>
                         <span className={styles['validation-error']}>{validationResult.errorMessage}</span>
                       </InternalAlert>
                       <LiveRegion>{validationResult.errorMessage}</LiveRegion>
@@ -219,7 +219,7 @@ export function DateRangePickerDropdown({
                       variant="link"
                       formAction="none"
                     >
-                      {i18nStrings.clearButtonLabel}
+                      {i18nStrings?.clearButtonLabel}
                     </InternalButton>
                   </div>
                 )}
@@ -231,7 +231,7 @@ export function DateRangePickerDropdown({
                       variant="link"
                       formAction="none"
                     >
-                      {i18nStrings.cancelButtonLabel}
+                      {i18nStrings?.cancelButtonLabel}
                     </InternalButton>
 
                     <InternalButton
@@ -240,7 +240,7 @@ export function DateRangePickerDropdown({
                       ref={applyButtonRef}
                       formAction="none"
                     >
-                      {i18nStrings.applyButtonLabel}
+                      {i18nStrings?.applyButtonLabel}
                     </InternalButton>
                   </SpaceBetween>
                 </div>

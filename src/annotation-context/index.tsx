@@ -174,7 +174,7 @@ export default function AnnotationContext({
         <OpenAnnotation
           i18nStrings={i18nStrings}
           direction={direction}
-          title={i18nStrings.taskTitle(taskIndex, task.title)}
+          title={i18nStrings?.taskTitle?.(taskIndex, task.title) ?? ''}
           content={step.content}
           alert={step.warningAlert}
           showPreviousButton={currentStepIndex !== 0}

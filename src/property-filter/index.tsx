@@ -214,9 +214,9 @@ const PropertyFilter = React.forwardRef(
           <PropertyFilterAutosuggest
             ref={inputRef}
             virtualScroll={virtualScroll}
-            enteredTextLabel={i18nStrings.enteredTextLabel}
-            ariaLabel={i18nStrings.filteringAriaLabel}
-            placeholder={i18nStrings.filteringPlaceholder}
+            enteredTextLabel={i18nStrings?.enteredTextLabel}
+            ariaLabel={i18nStrings?.filteringAriaLabel}
+            placeholder={i18nStrings?.filteringPlaceholder}
             value={filteringText}
             disabled={disabled}
             onKeyDown={handleKeyDown}
@@ -291,8 +291,8 @@ const PropertyFilter = React.forwardRef(
                     expanded={tokensExpanded}
                     numberOfHiddenOptions={tokens.length - slicedTokens.length}
                     i18nStrings={{
-                      limitShowFewer: i18nStrings.tokenLimitShowFewer,
-                      limitShowMore: i18nStrings.tokenLimitShowMore,
+                      limitShowFewer: i18nStrings?.tokenLimitShowFewer,
+                      limitShowMore: i18nStrings?.tokenLimitShowMore,
                     }}
                     onClick={toggleExpandedTokens}
                   />
@@ -300,7 +300,7 @@ const PropertyFilter = React.forwardRef(
               )}
               <div className={styles.separator} />
               <InternalButton onClick={removeAllTokens} className={styles['remove-all']} disabled={disabled}>
-                {i18nStrings.clearFiltersText}
+                {i18nStrings?.clearFiltersText}
               </InternalButton>
             </InternalSpaceBetween>
           </div>

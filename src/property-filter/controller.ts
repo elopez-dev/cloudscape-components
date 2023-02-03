@@ -138,11 +138,11 @@ export const getAllValueSuggestions = (
   filteringOptions: readonly FilteringOption[],
   filteringProperties: readonly FilteringProperty[],
   operator: ComparisonOperator | undefined = '=',
-  i18nStrings: I18nStrings,
+  i18nStrings: I18nStrings | undefined,
   customGroupsText: readonly GroupText[]
 ) => {
   const defaultGroup: OptionGroup<AutosuggestProps.Option> = {
-    label: i18nStrings.groupValuesText,
+    label: i18nStrings?.groupValuesText ?? '',
     options: [],
   };
   const customGroups: { [K in string]: OptionGroup<AutosuggestProps.Option> } = {};
@@ -240,11 +240,11 @@ const filteringPropertyToAutosuggestOption = (filteringProperty: FilteringProper
 export function getPropertySuggestions<T>(
   filteringProperties: readonly FilteringProperty[],
   customGroupsText: readonly GroupText[],
-  i18nStrings: I18nStrings,
+  i18nStrings: I18nStrings | undefined,
   filteringPropertyToOption: (filteringProperty: FilteringProperty) => T
 ) {
   const defaultGroup: OptionGroup<T> = {
-    label: i18nStrings.groupPropertiesText,
+    label: i18nStrings?.groupPropertiesText ?? '',
     options: [],
   };
   const customGroups: { [K in string]: OptionGroup<T> } = {};
@@ -274,7 +274,7 @@ export const getAutosuggestOptions = (
   filteringOptions: readonly FilteringOption[],
   filteringProperties: readonly FilteringProperty[],
   customGroupsText: readonly GroupText[],
-  i18nStrings: I18nStrings
+  i18nStrings?: I18nStrings
 ) => {
   switch (parsedText.step) {
     case 'property': {
@@ -311,7 +311,7 @@ export const getAutosuggestOptions = (
               description: operatorToDescription(value, i18nStrings),
               keepOpenOnSelect: true,
             })),
-            label: i18nStrings.operatorsText,
+            label: i18nStrings?.operatorsText,
           },
         ],
       };
@@ -345,16 +345,16 @@ export const getAutosuggestOptions = (
   }
 };
 
-export const operatorToDescription = (operator: ComparisonOperator, i18nStrings: I18nStrings) => {
-  const mapping: { [K in ComparisonOperator]: string } = {
-    ['<']: i18nStrings.operatorLessText,
-    ['<=']: i18nStrings.operatorLessOrEqualText,
-    ['>']: i18nStrings.operatorGreaterText,
-    ['>=']: i18nStrings.operatorGreaterOrEqualText,
-    [':']: i18nStrings.operatorContainsText,
-    ['!:']: i18nStrings.operatorDoesNotContainText,
-    ['=']: i18nStrings.operatorEqualsText,
-    ['!=']: i18nStrings.operatorDoesNotEqualText,
+export const operatorToDescription = (operator: ComparisonOperator, i18nStrings?: I18nStrings) => {
+  const mapping: { [K in ComparisonOperator]: string | undefined } = {
+    ['<']: i18nStrings?.operatorLessText,
+    ['<=']: i18nStrings?.operatorLessOrEqualText,
+    ['>']: i18nStrings?.operatorGreaterText,
+    ['>=']: i18nStrings?.operatorGreaterOrEqualText,
+    [':']: i18nStrings?.operatorContainsText,
+    ['!:']: i18nStrings?.operatorDoesNotContainText,
+    ['=']: i18nStrings?.operatorEqualsText,
+    ['!=']: i18nStrings?.operatorDoesNotEqualText,
   };
   return mapping[operator];
 };

@@ -30,7 +30,7 @@ interface TokenProps {
   filteringProperties: readonly FilteringProperty[];
   first?: boolean;
   hideOperations?: boolean;
-  i18nStrings: I18nStrings;
+  i18nStrings?: I18nStrings;
   onLoadItems?: NonCancelableEventHandler<LoadItemsDetail>;
   operation: JoinOperation;
   removeToken: () => void;
@@ -67,10 +67,10 @@ export const TokenButton = ({
     <FilteringToken
       showOperation={!first && !hideOperations}
       operation={operation}
-      andText={i18nStrings.operationAndText}
-      orText={i18nStrings.operationOrText}
-      dismissAriaLabel={i18nStrings.removeTokenButtonAriaLabel(token)}
-      operatorAriaLabel={i18nStrings.tokenOperatorAriaLabel}
+      andText={i18nStrings?.operationAndText}
+      orText={i18nStrings?.operationOrText}
+      dismissAriaLabel={i18nStrings?.removeTokenButtonAriaLabel?.(token)}
+      operatorAriaLabel={i18nStrings?.tokenOperatorAriaLabel}
       onChange={setOperation}
       onDismiss={removeToken}
       disabled={disabled}

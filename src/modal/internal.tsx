@@ -21,7 +21,7 @@ import styles from './styles.css.js';
 import { SomeRequired } from '../internal/types';
 import FocusLock from '../internal/components/focus-lock';
 
-type InternalModalProps = SomeRequired<ModalProps, 'size' | 'closeAriaLabel'> & InternalBaseComponentProps;
+type InternalModalProps = SomeRequired<ModalProps, 'size'> & InternalBaseComponentProps;
 
 export default function InternalModal({
   size,

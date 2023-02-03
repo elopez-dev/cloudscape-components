@@ -71,8 +71,8 @@ export default function SplitPanel({
   const appLayoutMaxWidth = isRefresh && position === 'bottom' ? contentWidthStyles : undefined;
 
   useEffect(() => {
-    setSplitPanelToggle({ displayed: closeBehavior === 'collapse', ariaLabel: i18nStrings.openButtonAriaLabel });
-  }, [setSplitPanelToggle, i18nStrings.openButtonAriaLabel, closeBehavior]);
+    setSplitPanelToggle({ displayed: closeBehavior === 'collapse', ariaLabel: i18nStrings?.openButtonAriaLabel });
+  }, [setSplitPanelToggle, i18nStrings?.openButtonAriaLabel, closeBehavior]);
 
   useEffect(() => {
     // effects are called inside out in the components tree
@@ -171,7 +171,7 @@ export default function SplitPanel({
               variant="icon"
               onClick={() => setPreferencesOpen(true)}
               formAction="none"
-              ariaLabel={i18nStrings.preferencesTitle}
+              ariaLabel={i18nStrings?.preferencesTitle}
               ref={preferencesRef}
             />
             <span className={styles.divider} />
@@ -187,7 +187,7 @@ export default function SplitPanel({
             variant="icon"
             onClick={onToggle}
             formAction="none"
-            ariaLabel={i18nStrings.closeButtonAriaLabel}
+            ariaLabel={i18nStrings?.closeButtonAriaLabel}
             ref={closeRef}
             ariaExpanded={isOpen}
           />
@@ -197,7 +197,7 @@ export default function SplitPanel({
             iconName="angle-up"
             variant="icon"
             formAction="none"
-            ariaLabel={i18nStrings.openButtonAriaLabel}
+            ariaLabel={i18nStrings?.openButtonAriaLabel}
             ref={toggleRef}
             ariaExpanded={isOpen}
           />
@@ -211,7 +211,7 @@ export default function SplitPanel({
       ref={handleRef}
       role="slider"
       tabIndex={0}
-      aria-label={i18nStrings.resizeHandleAriaLabel}
+      aria-label={i18nStrings?.resizeHandleAriaLabel}
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={relativeSize}
@@ -310,13 +310,13 @@ export default function SplitPanel({
               disabledSidePosition={position === 'bottom' && isForcedPosition}
               isRefresh={isRefresh}
               i18nStrings={{
-                header: i18nStrings.preferencesTitle,
-                confirm: i18nStrings.preferencesConfirm,
-                cancel: i18nStrings.preferencesCancel,
-                positionLabel: i18nStrings.preferencesPositionLabel,
-                positionDescription: i18nStrings.preferencesPositionDescription,
-                positionBottom: i18nStrings.preferencesPositionBottom,
-                positionSide: i18nStrings.preferencesPositionSide,
+                header: i18nStrings?.preferencesTitle,
+                confirm: i18nStrings?.preferencesConfirm,
+                cancel: i18nStrings?.preferencesCancel,
+                positionLabel: i18nStrings?.preferencesPositionLabel,
+                positionDescription: i18nStrings?.preferencesPositionDescription,
+                positionBottom: i18nStrings?.preferencesPositionBottom,
+                positionSide: i18nStrings?.preferencesPositionSide,
               }}
               onConfirm={preferences => {
                 onPreferencesChange({ ...preferences });

@@ -43,7 +43,7 @@ export function BucketsTable({
         ...getSharedI18Strings(i18nStrings),
         header: i18nStrings?.selectionBuckets,
         loadingText: i18nStrings?.selectionBucketsLoading,
-        filteringAriaLabel: i18nStrings?.labelFiltering(i18nStrings?.selectionBuckets),
+        filteringAriaLabel: i18nStrings?.labelFiltering?.(i18nStrings?.selectionBuckets ?? ''),
         filteringPlaceholder: i18nStrings?.selectionBucketsSearchPlaceholder,
         emptyText: i18nStrings?.selectionBucketsNoItems,
         selectionLabels: i18nStrings?.labelsBucketsSelection,

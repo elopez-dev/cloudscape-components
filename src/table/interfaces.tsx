@@ -327,7 +327,7 @@ export namespace TableProps {
   export type ColumnDefinition<ItemType> = {
     id?: string;
     header: React.ReactNode;
-    ariaLabel?(data: LabelData): string;
+    ariaLabel?(data: LabelData): string | undefined;
     width?: number | string;
     minWidth?: number | string;
     maxWidth?: number | string;

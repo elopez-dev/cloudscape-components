@@ -16,13 +16,13 @@ import bottomPositionIconRefresh from './icons/bottom-icon-refresh';
 import { InternalBaseComponentProps } from '../internal/hooks/use-base-component';
 
 interface PreferencesModali18nStrings {
-  header: string;
-  cancel: string;
-  confirm: string;
-  positionLabel: string;
-  positionDescription: string;
-  positionBottom: string;
-  positionSide: string;
+  header?: string;
+  cancel?: string;
+  confirm?: string;
+  positionLabel?: string;
+  positionDescription?: string;
+  positionBottom?: string;
+  positionSide?: string;
 }
 
 interface PreferencesModalProps extends InternalBaseComponentProps {
@@ -30,7 +30,7 @@ interface PreferencesModalProps extends InternalBaseComponentProps {
 
   preferences: { position: 'side' | 'bottom' };
 
-  i18nStrings: PreferencesModali18nStrings;
+  i18nStrings?: PreferencesModali18nStrings;
 
   disabledSidePosition?: boolean;
   isRefresh: boolean;
@@ -56,35 +56,35 @@ export default (props: PreferencesModalProps) => {
       size="medium"
       visible={props.visible}
       onDismiss={props.onDismiss}
-      header={props.i18nStrings.header}
-      closeAriaLabel={props.i18nStrings.cancel}
+      header={props.i18nStrings?.header}
+      closeAriaLabel={props.i18nStrings?.cancel}
       footer={
         <InternalBox float="right">
           <InternalSpaceBetween direction="horizontal" size="xs">
             <InternalButton onClick={onCancel} formAction="none" variant="link">
-              {props.i18nStrings.cancel}
+              {props.i18nStrings?.cancel}
             </InternalButton>
             <InternalButton onClick={onConfirm} variant="primary">
-              {props.i18nStrings.confirm}
+              {props.i18nStrings?.confirm}
             </InternalButton>
           </InternalSpaceBetween>
         </InternalBox>
       }
       __internalRootRef={props.__internalRootRef}
     >
-      <InternalFormField label={props.i18nStrings.positionLabel} description={props.i18nStrings.positionDescription}>
+      <InternalFormField label={props.i18nStrings?.positionLabel} description={props.i18nStrings?.positionDescription}>
         <InternalTiles
           onChange={e => setPosition(e.detail.value as any)}
           value={position}
           columns={2}
           items={[
             {
-              label: props.i18nStrings.positionBottom,
+              label: props.i18nStrings?.positionBottom,
               image: props.isRefresh ? bottomPositionIconRefresh : bottomPositionIconClassic,
               value: 'bottom',
             },
             {
-              label: props.i18nStrings.positionSide,
+              label: props.i18nStrings?.positionSide,
               image: props.isRefresh ? sidePositionIconRefresh : sidePositionIconClassic,
               value: 'side',
               disabled: props.disabledSidePosition,

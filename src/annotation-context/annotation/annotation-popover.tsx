@@ -99,7 +99,7 @@ export function AnnotationPopover({
     >
       <PopoverBody
         dismissButton={true}
-        dismissAriaLabel={i18nStrings.labelDismissAnnotation}
+        dismissAriaLabel={i18nStrings?.labelDismissAnnotation}
         header={
           <InternalBox
             id={popoverHeaderId}
@@ -137,7 +137,7 @@ export function AnnotationPopover({
                   color="text-body-secondary"
                   fontSize="body-s"
                 >
-                  {i18nStrings.stepCounterText(taskLocalStepIndex ?? 0, totalLocalSteps ?? 0)}
+                  {i18nStrings?.stepCounterText?.(taskLocalStepIndex ?? 0, totalLocalSteps ?? 0)}
                 </InternalBox>
               </div>
               <InternalSpaceBetween size="xs" direction="horizontal">
@@ -147,10 +147,10 @@ export function AnnotationPopover({
                     onClick={onPreviousButtonClick}
                     disabled={!previousButtonEnabled}
                     formAction="none"
-                    ariaLabel={i18nStrings.previousButtonText}
+                    ariaLabel={i18nStrings?.previousButtonText}
                     className={styles['previous-button']}
                   >
-                    {i18nStrings.previousButtonText}
+                    {i18nStrings?.previousButtonText}
                   </InternalButton>
                 )}
 
@@ -158,20 +158,20 @@ export function AnnotationPopover({
                   <InternalButton
                     onClick={onFinish}
                     formAction="none"
-                    ariaLabel={i18nStrings.finishButtonText}
+                    ariaLabel={i18nStrings?.finishButtonText}
                     className={styles['finish-button']}
                   >
-                    {i18nStrings.finishButtonText}
+                    {i18nStrings?.finishButtonText}
                   </InternalButton>
                 ) : (
                   <InternalButton
                     onClick={onNextButtonClick}
                     disabled={!nextButtonEnabled}
                     formAction="none"
-                    ariaLabel={i18nStrings.nextButtonText}
+                    ariaLabel={i18nStrings?.nextButtonText}
                     className={styles['next-button']}
                   >
-                    {i18nStrings.nextButtonText}
+                    {i18nStrings?.nextButtonText}
                   </InternalButton>
                 )}
               </InternalSpaceBetween>

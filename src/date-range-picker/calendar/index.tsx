@@ -27,7 +27,7 @@ export interface DateRangePickerCalendarProps extends BaseComponentProps {
   locale?: string;
   startOfWeek?: number;
   isDateEnabled?: (date: Date) => boolean;
-  i18nStrings: RangeCalendarI18nStrings;
+  i18nStrings?: RangeCalendarI18nStrings;
   dateOnly?: boolean;
   timeInputFormat?: TimeInputProps.Format;
   customAbsoluteRangeControl: DateRangePickerProps.AbsoluteRangeControl | undefined;
@@ -74,11 +74,11 @@ export default function DateRangePickerCalendar({
   // because the user is not aware of the fact that a start/end time is also set as soon as they select a date
   const announceStart = (startDate: Date) => {
     return (
-      i18nStrings.startDateLabel +
+      i18nStrings?.startDateLabel +
       ', ' +
       getDateLabel(normalizedLocale, startDate) +
       ', ' +
-      i18nStrings.startTimeLabel +
+      i18nStrings?.startTimeLabel +
       ', ' +
       renderTimeLabel(normalizedLocale, startDate, timeInputFormat) +
       '. '
@@ -87,11 +87,11 @@ export default function DateRangePickerCalendar({
 
   const announceEnd = (endDate: Date) => {
     return (
-      i18nStrings.endDateLabel +
+      i18nStrings?.endDateLabel +
       ', ' +
       getDateLabel(normalizedLocale, endDate) +
       ', ' +
-      i18nStrings.endTimeLabel +
+      i18nStrings?.endTimeLabel +
       ', ' +
       renderTimeLabel(normalizedLocale, endDate, timeInputFormat) +
       '. '
@@ -99,10 +99,10 @@ export default function DateRangePickerCalendar({
   };
 
   const announceRange = (startDate: Date, endDate: Date) => {
-    if (!i18nStrings.renderSelectedAbsoluteRangeAriaLive) {
+    if (!i18nStrings?.renderSelectedAbsoluteRangeAriaLive) {
       return `${getDateLabel(normalizedLocale, startDate)} – ${getDateLabel(normalizedLocale, endDate)}`;
     }
-    return i18nStrings.renderSelectedAbsoluteRangeAriaLive(
+    return i18nStrings?.renderSelectedAbsoluteRangeAriaLive(
       getDateLabel(normalizedLocale, startDate),
       getDateLabel(normalizedLocale, endDate)
     );
@@ -217,8 +217,8 @@ export default function DateRangePickerCalendar({
               baseDate={currentMonth}
               locale={normalizedLocale}
               onChangeMonth={onHeaderChangeMonthHandler}
-              previousMonthLabel={i18nStrings.previousMonthAriaLabel}
-              nextMonthLabel={i18nStrings.nextMonthAriaLabel}
+              previousMonthLabel={i18nStrings?.previousMonthAriaLabel}
+              nextMonthLabel={i18nStrings?.nextMonthAriaLabel}
               isSingleGrid={isSingleGrid}
               headingIdPrefix={headingIdPrefix}
             />
@@ -233,7 +233,7 @@ export default function DateRangePickerCalendar({
               onSelectDate={onSelectDateHandler}
               onChangeMonth={setCurrentMonth}
               startOfWeek={normalizedStartOfWeek}
-              todayAriaLabel={i18nStrings.todayAriaLabel}
+              todayAriaLabel={i18nStrings?.todayAriaLabel}
               selectedStartDate={parseDate(value.start.date, true)}
               selectedEndDate={parseDate(value.end.date, true)}
               headingIdPrefix={headingIdPrefix}

@@ -10,7 +10,7 @@ import styles from './styles.css.js';
 import { useSplitPanelContext } from '../internal/context/split-panel-context';
 
 interface SplitPanelContentSideProps extends SplitPanelContentProps {
-  i18nStrings: SplitPanelProps.I18nStrings;
+  i18nStrings?: SplitPanelProps.I18nStrings;
   toggleRef: React.RefObject<ButtonProps.Ref>;
 }
 
@@ -61,7 +61,7 @@ export function SplitPanelContentSide({
             iconName="angle-left"
             variant="icon"
             formAction="none"
-            ariaLabel={i18nStrings.openButtonAriaLabel}
+            ariaLabel={i18nStrings?.openButtonAriaLabel}
             ariaExpanded={isOpen}
             ref={isRefresh ? null : toggleRef}
           />

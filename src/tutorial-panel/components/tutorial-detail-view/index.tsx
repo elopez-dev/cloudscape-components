@@ -42,7 +42,7 @@ export default function TutorialDetailView({
           <InternalButton
             variant="icon"
             onClick={onExitTutorial}
-            ariaLabel={i18nStrings.labelExitTutorial}
+            ariaLabel={i18nStrings?.labelExitTutorial}
             formAction="none"
             iconName="arrow-left"
           />

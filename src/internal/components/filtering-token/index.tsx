@@ -16,8 +16,8 @@ export namespace FilteringTokenProps {
 export interface FilteringTokenProps {
   showOperation: boolean;
   operation: FilteringTokenProps.Operation;
-  andText: string;
-  orText: string;
+  andText?: string;
+  orText?: string;
   dismissAriaLabel?: string;
   operatorAriaLabel?: string;
   disabled?: boolean;

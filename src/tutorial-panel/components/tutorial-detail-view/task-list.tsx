@@ -47,7 +47,7 @@ export function TaskList({ tasks, onExitTutorial, currentGlobalStepIndex, i18nSt
       </ol>
       <InternalBox margin={{ top: 'xxxs' }}>
         <InternalButton onClick={onExitTutorial} formAction="none" className={styles['dismiss-button']}>
-          {i18nStrings.dismissTutorialButtonText}
+          {i18nStrings?.dismissTutorialButtonText}
         </InternalButton>
       </InternalBox>
     </InternalSpaceBetween>

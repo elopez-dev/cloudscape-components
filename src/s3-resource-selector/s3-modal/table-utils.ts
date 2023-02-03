@@ -28,11 +28,11 @@ export function getColumnAriaLabel(
 ) {
   return ({ sorted, descending }: TableProps.LabelData) => {
     if (!sorted) {
-      return i18nStrings?.labelNotSorted(columnName);
+      return i18nStrings?.labelNotSorted?.(columnName);
     }
     if (descending) {
-      return i18nStrings?.labelSortedDescending(columnName);
+      return i18nStrings?.labelSortedDescending?.(columnName);
     }
-    return i18nStrings?.labelSortedAscending(columnName);
+    return i18nStrings?.labelSortedAscending?.(columnName);
   };
 }

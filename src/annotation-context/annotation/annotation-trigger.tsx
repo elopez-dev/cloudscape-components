@@ -35,7 +35,7 @@ export default React.forwardRef<HTMLButtonElement, AnnotationTriggerProps>(funct
       ref={ref}
       className={styles.hotspot}
       aria-haspopup="dialog"
-      aria-label={i18nStrings.labelHotspot(open, taskLocalStepIndex ?? 0, totalLocalSteps ?? 0)}
+      aria-label={i18nStrings?.labelHotspot?.(open, taskLocalStepIndex ?? 0, totalLocalSteps ?? 0)}
       onClick={onClick}
       {...focusVisible}
     >
