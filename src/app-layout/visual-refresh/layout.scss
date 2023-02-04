@@ -75,9 +75,96 @@ explicitly set in script.
   min-height: var(#{custom-props.$contentHeight});
   position: relative;
 
-  // Override the dark header overlap height property if disableContentHeaderOverlap is true.
+  // Add unified max-width for AppLayout content based on breakpoints.
+  &:not(.has-max-content-width) {
+    @each $breakpoint, $width in constants.$adaptive-content-widths {
+      @include styles.media-breakpoint-up($breakpoint) {
+        #{custom-props.$defaultMaxContentWidth}: $width;
+      }
+    }
+  }
+
+  /*
+  Only use the max content width custom property for the middle column definition
+  if the maxContentWidth property has been explicitly set to a non-zero value and
+  subsequently set the has-max-content-width data attribute to true.
+  */
+  &.has-max-content-width {
+    #{custom-props.$defaultMaxContentWidth}: var(#{custom-props.$maxContentWidth});
+  }
+
+  /*
+  Warning! This is a hack! We are implementing a short term fix to prevent the tools drawer 
+  from potentially getting pushed off screen. Currently there is no protection against a 
+  navigationWidth, minContentWidth, and toolsWidth that are in excess ove the available 
+  space in the viewport. To accomodate this we remove the minContentWidth and set it to 
+  zero in small viewports and below until the isMobile breakpoint sets the drawers to 
+  overlay at 100vw.
+  */
+  @include styles.media-breakpoint-up(styles.$breakpoint-small) {
+    #{custom-props.$defaultMinContentWidth}: var(#{custom-props.$minContentWidth}, 280px);
+  }
+
+  @include styles.media-breakpoint-down(styles.$breakpoint-small) {
+    #{custom-props.$defaultMinContentWidth}: 0px;
+  }
+
+  /*
+  Override the dark header overlap height property if isOverlapDisabled is true.
+  The is computed state from props that can be found in the AppLayout context.
+  */
   &.is-overlap-disabled {
     #{custom-props.$overlapHeight}: 0;
+  }
+
+  /*
+  The offset top value for components with position: sticky (AppBar, Navigation, 
+  Notifications, Tools) will be set to the header height value. The offset top value 
+  for AppLayout contentMain children with position: sticky will be the combined value 
+  of the header and notifications height in addition to the notifications top margin
+  and some additional vertical space for aesthetics.
+  */
+  &:not(.has-sticky-notifications) {
+    #{custom-props.$offsetTopWithNotifications}: var(#{custom-props.$headerHeight});
+  }
+
+  // #{awsui.$space-xs} token needs to align with the top margin in the notifications CSS
+  &.has-sticky-notifications {
+    #{custom-props.$offsetTopWithNotifications}: calc(
+      var(#{custom-props.$headerHeight}) + var(#{custom-props.$notificationsHeight}) + #{awsui.$space-xs} + #{awsui.$space-xxxs}
+    );
+  }
+
+  /*
+  In desktop viewports the content gap property for the left and right
+  columns should override the default of zero if the navigationHide
+  or toolsHide property is set. This ensures adequate horizontal space
+  for the center column from the edges of the viewport when there is
+  not left or right content.
+  
+  Warning! If these design tokens change it will adversely impact the 
+  calculation used to determine the Split Panel maximum width in the 
+  handleSplitPanelMaxWidth function in the context.
+  */
+  @include styles.media-breakpoint-up(styles.$breakpoint-x-small) {
+    &.has-content-gap-left {
+      #{custom-props.$contentGapLeft}: #{awsui.$space-scaled-2x-xxxl};
+    }
+
+    &.has-content-gap-right {
+      #{custom-props.$contentGapRight}: #{awsui.$space-scaled-2x-xxxl};
+    }
+  }
+
+  /*
+  In mobile viewports the Navigation and Tools drawers are hidden
+  and triggered by the MobileToolbar which then take up the entire viewport.
+  The center column needs permanent space from the horizontal viewport
+  edges regardless of whether or not there is a Navigation or Tools.
+  */
+  @include styles.media-breakpoint-down(styles.$breakpoint-x-small) {
+    #{custom-props.$contentGapLeft}: #{awsui.$space-l};
+    #{custom-props.$contentGapRight}: #{awsui.$space-l};
   }
 
   /*
@@ -127,72 +214,6 @@ explicitly set in script.
 
   &.has-header.is-overlap-disabled {
     #{custom-props.$mainGap}: #{awsui.$space-scaled-xs};
-  }
-
-  /*
-  Add unified max-width for AppLayout content based on breakpoints. Only use the max content 
-  width custom property for the middle column definition if the maxContentWidth property 
-  has been explicitly set to a non-zero value and subsequently set the has-max-content-width 
-  data attribute to true.
-  */
-  &:not(.has-max-content-width) {
-    @each $breakpoint, $width in constants.$adaptive-content-widths {
-      @include styles.media-breakpoint-up($breakpoint) {
-        #{custom-props.$defaultMaxContentWidth}: $width;
-      }
-    }
-  }
-
-  &.has-max-content-width {
-    #{custom-props.$defaultMaxContentWidth}: var(#{custom-props.$maxContentWidth});
-  }
-
-  /*
-  Warning! This is a hack! We are implementing a short term fix to prevent the tools drawer 
-  from potentially getting pushed off screen. Currently there is no protection against a 
-  navigationWidth, minContentWidth, and toolsWidth that are in excess ove the available 
-  space in the viewport. To accomodate this we remove the minContentWidth and set it to 
-  zero in small viewports and below until the isMobile breakpoint sets the drawers to 
-  overlay at 100vw.
-  */
-  @include styles.media-breakpoint-up(styles.$breakpoint-small) {
-    #{custom-props.$defaultMinContentWidth}: var(#{custom-props.$minContentWidth}, 280px);
-  }
-
-  @include styles.media-breakpoint-down(styles.$breakpoint-small) {
-    #{custom-props.$defaultMinContentWidth}: 0px;
-  }
-
-  /*
-  In desktop viewports the content gap property for the left and right
-  columns should override the default of zero if the navigationHide
-  or toolsHide property is set. This ensures adequate horizontal space
-  for the center column from the edges of the viewport when there is
-  not left or right content.
-  
-  Warning! If these design tokens change it will adversely impact the 
-  calculation used to determine the Split Panel maximum width in the 
-  handleSplitPanelMaxWidth function in the context.
-  */
-  @include styles.media-breakpoint-up(styles.$breakpoint-x-small) {
-    &.has-content-gap-left {
-      #{custom-props.$contentGapLeft}: #{awsui.$space-scaled-2x-xxxl};
-    }
-
-    &.has-content-gap-right {
-      #{custom-props.$contentGapRight}: #{awsui.$space-scaled-2x-xxxl};
-    }
-  }
-
-  /*
-  In mobile viewports the Navigation and Tools drawers are hidden
-  and triggered by the MobileToolbar which then take up the entire viewport.
-  The center column needs permanent space from the horizontal viewport
-  edges regardless of whether or not there is a Navigation or Tools.
-  */
-  @include styles.media-breakpoint-down(styles.$breakpoint-x-small) {
-    #{custom-props.$contentGapLeft}: #{awsui.$space-l};
-    #{custom-props.$contentGapRight}: #{awsui.$space-l};
   }
 }
 
