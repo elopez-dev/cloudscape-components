@@ -17,7 +17,7 @@ export default function TopNavigationPage() {
       <TopNavigation
         i18nStrings={I18N_STRINGS}
         identity={{
-          logo: { src: logo, alt: 'Logo' },
+          logo: { src: logo, alt: 'Logo custom' },
           href: '#',
           title: 'Input as a search',
         }}
